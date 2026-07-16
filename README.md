@@ -63,24 +63,24 @@ You are the **tech lead** in this workflow. Copilot handles the *how*. You defin
 5. Work through the exercises in order, starting with [`exercises/01-write-an-issue`](./exercises/01-write-an-issue/README.md).
 
 ---
-
 ## Repo Structure
 
 ```
-AIGenius-GHCP-AINative/
-  README.md                          # You are here
-  .github/
-    copilot-instructions.md          # Standing instructions for Copilot
-    ISSUE_TEMPLATE/
-      feature-request.md             # Issue template for AI-native workflow
-  exercises/
-    01-write-an-issue/               # Task: write a well-formed issue
-    02-assign-to-copilot/            # Task: assign an issue and observe
-    03-review-a-pr/                  # Task: review and comment on a PR
-    04-iterate/                      # Task: iterate via PR comments
-  starter-app/                       # Simple Python task manager to extend
-    app.py
-    requirements.txt
+📁 ai-genius-ep1/
+  ├── README.md                    # Episode intro + setup instructions
+  ├── .github/
+  │   ├── copilot-instructions.md  # Pre-written Copilot context for the project
+  │   └── ISSUE_TEMPLATE/
+  │       └── feature-request.md  # Issue template for AI-native workflow
+  ├── exercises/
+  │   ├── 01-write-an-issue/       # Task: write a well-formed issue
+  │   ├── 02-assign-to-copilot/    # Task: assign + observe
+  │   ├── 03-review-a-pr/          # Task: review and comment on a PR
+  │   └── 04-iterate/              # Task: iterate via PR comments
+  └── starter-app/                 # Simple Python or JS app to extend
+      ├── app.py (or index.js)
+      └── requirements.txt (or package.json)
+
 ```
 
 ---
