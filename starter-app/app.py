@@ -34,8 +34,11 @@ def load_tasks() -> list[dict]:
         return []
     try:
         with TASKS_FILE.open("r", encoding="utf-8") as f:
-            return json.load(f)
-    except (json.JSONDecodeError, OSError):
+            data = json.load(f)
+        if not isinstance(data, list):
+            raise ValueError("tasks file must contain a JSON array")
+        return data
+    except (json.JSONDecodeError, OSError, ValueError):
         console.print("[red]Warning: Could not read tasks file. Starting fresh.[/red]")
         return []
 
