@@ -19,7 +19,7 @@ import click
 from rich.console import Console
 from rich.table import Table
 
-TASKS_FILE = Path("tasks.json")
+TASKS_FILE = Path(__file__).resolve().with_name("tasks.json")
 console = Console()
 
 
