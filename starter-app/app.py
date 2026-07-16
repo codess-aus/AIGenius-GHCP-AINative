@@ -113,10 +113,14 @@ def list_tasks() -> None:
     table.add_column("Task")
     table.add_column("Status", width=10)
 
+    from rich.text import Text
+
     for task in tasks:
         status = "[green]Done[/green]" if task["done"] else "[yellow]Pending[/yellow]"
-        name = f"[strike]{task['name']}[/strike]" if task["done"] else task["name"]
-        table.add_row(str(task["id"]), name, status)
+        task_name = Text(str(task["name"]))
+        if task["done"]:
+            task_name.stylize("strike")
+        table.add_row(str(task["id"]), task_name, status)
 
     console.print(table)
 
