@@ -96,7 +96,7 @@ def add(name: str) -> None:
     }
     tasks.append(task)
     save_tasks(tasks)
-    console.print(f"[green]Added task #{task['id']}:[/green] {name}")
+    console.print(f"Added task #{task['id']}: {name}", style="green", markup=False)
 
 
 @cli.command(name="list")
