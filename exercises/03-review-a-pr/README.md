@@ -71,7 +71,7 @@ Good comments are specific. Instead of:
 > "This could be better"
 
 Try:
-> "Can you add input validation to the task name field? It should reject empty strings and names longer than 100 characters."
+> "Can you add input validation to the task name field? It should reject empty strings and names longer than 200 characters."
 
 ---
 
