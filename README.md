@@ -1,4 +1,8 @@
 # AI Genius Episode 1: Workshop Repo
+
+![TitlePage](https://github.com/codess-aus/AIGenius-GHCP-AINative/blob/4d72afc7038a1cf0f45bc48c38ae517547b30628/assets/AI-Genius-Ep1.png)
+
+
 ## "Code with AI: GitHub Copilot for AI-Native Coding Workflows"
 
 Welcome! This is the hands-on workshop repo for **AI Genius Episode 1**. You'll work through the full AI-native development loop: writing issues, delegating to Copilot, reviewing generated code, and iterating via PR comments.
