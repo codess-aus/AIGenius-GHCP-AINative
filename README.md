@@ -55,11 +55,14 @@ You are the **tech lead** in this workflow. Copilot handles the *how*. You defin
    cd AIGenius-GHCP-AINative
    ```
 
-3. **Set up the starter app**:
+3. **Run the starter app**:
    ```bash
    cd starter-app
    pip install -r requirements.txt
-   python app.py
+   python app.py add "Deploy the API" --priority high --due 2025-12-31 --tag work
+   python app.py add "Buy coffee" --priority low --tag personal
+   python app.py list
+   python app.py stats
    ```
 
 4. **Open the GitHub Copilot App** and connect it to your forked repo.
@@ -70,21 +73,24 @@ You are the **tech lead** in this workflow. Copilot handles the *how*. You defin
 ## Repo Structure
 
 ```
-📁 ai-genius-ep1/
-  ├── README.md                    # Episode intro + setup instructions
+📁 AIGenius-GHCP-AINative/
+  ├── README.md                        # Episode intro + setup instructions
   ├── .github/
-  │   ├── copilot-instructions.md  # Pre-written Copilot context for the project
+  │   ├── copilot-instructions.md      # Copilot context: conventions, Azure patterns, secrets
   │   └── ISSUE_TEMPLATE/
-  │       └── feature-request.md  # Issue template for AI-native workflow
+  │       └── feature-request.md       # Issue template for AI-native workflow
   ├── exercises/
-  │   ├── 01-write-an-issue/       # Task: write a well-formed issue
-  │   ├── 02-assign-to-copilot/    # Task: assign + observe
-  │   ├── 03-review-a-pr/          # Task: review and comment on a PR
-  │   └── 04-iterate/              # Task: iterate via PR comments
-  └── starter-app/                 # Simple Python or JS app to extend
-      ├── app.py (or index.js)
-      └── requirements.txt (or package.json)
-
+  │   ├── 01-write-an-issue/           # Task: write a well-formed issue (cloud/AI options)
+  │   ├── 02-assign-to-copilot/        # Task: assign + observe
+  │   ├── 03-review-a-pr/              # Task: review and comment on a PR
+  │   ├── 04-iterate/                  # Task: iterate via PR comments
+  │   └── 05-azure-and-ai/             # Stretch: pre-written issues for Azure + OpenAI features
+  └── starter-app/                     # Python CLI task manager to extend
+      ├── app.py                       # CLI: add, list, complete, edit, delete, stats
+      ├── requirements.txt             # click, rich, pytest
+      └── tests/
+          ├── conftest.py              # Shared fixtures (isolated task file)
+          └── test_tasks.py            # 41 tests covering all commands + edge cases
 ```
 
 ---
