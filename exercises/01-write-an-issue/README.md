@@ -30,16 +30,19 @@ A well-formed issue for Copilot includes:
 
 1. Go to the **Issues** tab in this repo.
 2. Click **New issue** and choose the **Feature Request** template.
-3. Write an issue for one of the following features in the starter app:
+3. Write an issue for one of the following features:
 
-   **Option A:** Add a due date to tasks
-   > Users should be able to set an optional due date when creating a task, and see overdue tasks highlighted in the task list.
+   **Option A:** Migrate task storage to Azure Table Storage
+   > The app currently stores tasks in a local JSON file. Migrate the storage layer to Azure Table Storage so tasks are persisted in the cloud. Use `azure-data-tables` and load credentials from environment variables. The CLI commands should work identically to today.
 
-   **Option B:** Filter tasks by status
-   > Users should be able to run a command to list only completed tasks, or only incomplete tasks, instead of always seeing everything.
+   **Option B:** Add Azure OpenAI task categorisation
+   > When a user adds a task, call Azure OpenAI to automatically suggest a category (e.g. "work", "personal", "health") and set it as a tag if none are provided. The user should be able to opt out with `--no-ai`. Load credentials from environment variables.
 
-   **Option C:** Export tasks to CSV
-   > Users should be able to export their task list to a CSV file so they can open it in a spreadsheet tool.
+   **Option C:** Add a `search` command
+   > Users should be able to run `python app.py search "keyword"` to find tasks whose name or description contains the keyword. Results should be ranked by priority (high first) and highlight the matching text.
+
+   **Option D:** Add recurring tasks
+   > Users should be able to mark a task as recurring with `--repeat daily|weekly|monthly`. When a recurring task is completed, a new copy should be automatically created with the next due date calculated.
 
 4. Fill in **every section** of the template. Do not leave any section empty.
 5. Submit the issue.
@@ -57,3 +60,4 @@ A well-formed issue for Copilot includes:
 ## Next Step
 
 Once you've written your issue, move on to [Exercise 02 -- Assign to Copilot](../02-assign-to-copilot/README.md).
+
