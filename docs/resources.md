@@ -1,17 +1,20 @@
 # Chapter 6 - Resources and Next Steps
 
 <!-- HERO IMAGE PLACEHOLDER: prompt below -->
-<!-- IMAGE PROMPT: Flat illustration of an open book or curated bookshelf with glowing icons floating above representing certification badges, community/agent icons, and a signpost pointing forward. Dark navy background, gold accents, 16:9. -->
+<!-- IMAGE PROMPT: Flat illustration of an open book or curated bookshelf with glowing icons floating above representing certification badges, community/agent icons, and a signpost pointing forward -->
 <!-- ALT TEXT: Curated bookshelf of workshop resources with icons for certifications and community projects. -->
 
-You've completed the full AI-native development loop: write an issue, assign it to Copilot, review the draft PR, iterate via comments, and merge. Use these links to keep building that skill after the workshop.
+You've completed the full AI-native development loop: write an issue, assign it to Copilot, review the draft PR, iterate via comments, and merge. Use these links to keep building that skill after today.
 
 ## GitHub Copilot & Agents
 
 - [Awesome Copilot](https://awesome-copilot.github.com/) - A curated collection of examples, tools, and patterns for practical Copilot usage.
+- [Awesome Copilot Learning Hub](https://github.com/github/awesome-copilot) - A structured, community-maintained learning path covering the Copilot App, Copilot Chat, the Copilot CLI, custom instructions, skills, and agentic workflows. A great next stop after Chapter 2.
+- [GitHub Spec Kit](https://github.github.com/spec-kit/index.html) - Toolkit and methodology for spec-driven development, writing specifications that agents like Copilot can implement against.
 - [GitHub Agentic Process Engineering (git-ape)](https://azure.github.io/git-ape/) - Framework guidance for designing repeatable agent-driven software workflows.
 - [bradygaster/squad](https://github.com/bradygaster/squad) - Sample project demonstrating multi-agent "squad" orchestration patterns in real code.
 - [Copilot CLI fleet docs](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/fleet) - Official guidance on coordinating and scaling Copilot CLI agent workflows.
+- [Install the GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli) - Setup instructions for the CLI used in Chapter 2's Copilot Chat and CLI exploration steps.
 - [About Copilot coding agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent) - Core concepts for how the cloud coding agent operates and what safeguards exist.
 
 ## Learning & Certification
