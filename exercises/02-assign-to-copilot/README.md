@@ -63,7 +63,7 @@ gh copilot explain "python app.py stats"
 
 ## Go Deeper (Optional): Scaling Up, From One Issue to a Fleet
 
-> ⚠️ **Token cost warning:** Everything below is heavier on AI usage than the one-issue, one-agent loop you just ran. `/fleet` and `/squad` both spin up **multiple** agent sessions instead of one. If you're on a personal/paid plan and don't have a real project in mind to justify it, it's fine to just read this section and skip running it live.
+> ⚠️ **Token cost warning:** The two exercises below are heavier on AI usage than the one-issue, one-agent loop you just ran. `/fleet` and `/squad` both spin up **multiple** agent sessions instead of one. If you're on a personal/paid plan and don't have a real project in mind to justify it, it's fine to just read the linked exercises and skip running them live.
 
 So far you've done the smallest possible unit of AI-native work: one issue, one agent, one PR. That's the right place to start, but it doesn't scale to a real sprint, where you might have ten issues in flight. This is where `/fleet` and `/squad` come in, two different answers to the same question: *how do I go from one developer directing one agent, to a whole team directing many agents at once?*
 
@@ -73,11 +73,15 @@ So far you've done the smallest possible unit of AI-native work: one issue, one 
 
 Think of it like this: if today's single Copilot agent is one developer picking up one issue, `/fleet` is like assigning ten related issues at once and having ten short-lived contractors work them simultaneously, then handing back the combined result.
 
+**Try it step by step:** [Exercise 02A - Parallel Execution with `/fleet`](../02a-fleet-mode/README.md) walks through installing the Copilot CLI, authenticating, and running your own `/fleet` prompt.
+
 ### `/squad`: a persistent team of agents
 
 `/squad` is a different shape of answer. It's not a single CLI command, it's an open source framework you install into your repo that creates a persistent team of named agents. Unlike Fleet's disposable sub-agents, Squad agents stick around across issues and sessions.
 
 If Fleet is contractors for a single sprint, Squad is closer to hiring permanent specialists onto your team: they build context over time, and they can even use Fleet internally when they need a burst of parallel throughput.
+
+**Try it step by step:** [Exercise 02B - A Persistent Team with `/squad`](../02b-squad-framework/README.md) walks through installing the Squad CLI, initializing a team, and delegating a task to a named specialist.
 
 ### Why this maps to cloud-native architecture
 
@@ -86,18 +90,6 @@ If Fleet is contractors for a single sprint, Squad is closer to hiring permanent
 - **Wave-based dependency scheduling** inside `/fleet`, run what's unblocked, wait, run the next wave, is conceptually the same DAG scheduling you already know from CI/CD pipelines or a Kubernetes job graph.
 
 The takeaway: the single-issue loop from this exercise is the "hello world". `/fleet` and `/squad` are how that same loop scales to a real team's backlog without you personally babysitting every single agent session.
-
-### How you'd scale this exercise out
-
-If you had a real backlog instead of one issue, you could run something like:
-
-```bash
-/fleet Break the remaining Exercise 05 issue into independent sub-tasks
-(Azure OpenAI client setup, tag suggestion function, tests) and
-work them in parallel
-```
-
-The orchestrator splits the objective, dispatches the independent pieces at once, and reassembles the result as a single reviewable PR, rather than you running each sub-task through this exercise's loop one at a time.
 
 ### The safety model doesn't change
 
