@@ -57,33 +57,3 @@ If you have the [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/
 ```bash
 gh copilot suggest "run the starter-app tests and show a summary of failures"
 gh copilot explain "python app.py stats"
-```
-
-The CLI is useful for quick, one-off questions and shell command help without leaving the terminal, a lighter-weight complement to the full agent workflow you triggered in Step 1.
-
----
-
-## What to Look For
-
-While Copilot is working, notice:
-
-- How does it explore the codebase before writing code?
-- Does it reference the `copilot-instructions.md` file?
-- How long does it take from assignment to draft PR?
-- What does it include in the session log?
-- How does the experience of Chat/CLI (interactive, immediate) differ from the agent (autonomous, asynchronous)?
-
----
-
-## Reflection Questions
-
-- What surprised you about how Copilot approached the task?
-- Did it interpret your issue the way you intended?
-- What would you write differently in the issue now that you've seen the result?
-- When would you reach for Chat or the CLI instead of assigning an issue to the agent?
-
----
-
-## Next Step
-
-Once Copilot has opened a draft PR, move on to [Exercise 03 -- Review a PR](../03-review-a-pr/README.md).
