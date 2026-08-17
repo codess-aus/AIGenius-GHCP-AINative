@@ -72,7 +72,7 @@ Before you start Chapter 1, make sure you have:
 <div class="home-chapters" markdown>
 <div class="grid cards chapter-grid" markdown>
 
--   ![Chapter 1 thumbnail - developer typing a structured issue while an AI agent reads it](assets/hero-write-issue.png){ .chapter-thumb }
+-   ![Chapter 1 thumbnail - issue writing concept with structured prompt cards](assets/agenda.png){ .chapter-thumb }
 
     <span class="chapter-eyebrow">Chapter 1</span>
     ### Write a Well-Formed Issue
@@ -81,7 +81,7 @@ Before you start Chapter 1, make sure you have:
 
     [Read chapter →](chapter-1-write-an-issue.md)
 
--   ![Chapter 2 thumbnail - issue being handed off to an AI agent working in an isolated sandbox](assets/hero-assign-copilot.png){ .chapter-thumb }
+-   ![Chapter 2 thumbnail - AI-native workflow loop diagram](assets/ai-native-loop.png){ .chapter-thumb }
 
     <span class="chapter-eyebrow">Chapter 2</span>
     ### Assign to Copilot
@@ -90,7 +90,7 @@ Before you start Chapter 1, make sure you have:
 
     [Read chapter →](chapter-2-assign-to-copilot.md)
 
--   ![Chapter 3 thumbnail - magnifying glass inspecting a pull request diff against a checklist](assets/hero-review-pr.png){ .chapter-thumb }
+-   ![Chapter 3 thumbnail - pull request review with checklist focus](assets/agenda.png){ .chapter-thumb }
 
     <span class="chapter-eyebrow">Chapter 3</span>
     ### Review a Draft PR
@@ -99,7 +99,7 @@ Before you start Chapter 1, make sure you have:
 
     [Read chapter →](chapter-3-review-a-pr.md)
 
--   ![Chapter 4 thumbnail - human and AI agent exchanging feedback in a refinement loop](assets/hero-iterate.png){ .chapter-thumb }
+-   ![Chapter 4 thumbnail - feedback loop between human reviewer and AI agent](assets/ai-native-loop.png){ .chapter-thumb }
 
     <span class="chapter-eyebrow">Chapter 4</span>
     ### Iterate via PR Comments
@@ -108,7 +108,7 @@ Before you start Chapter 1, make sure you have:
 
     [Read chapter →](chapter-4-iterate.md)
 
--   ![Chapter 5 thumbnail - cloud storage and AI service icons connected to a CLI application architecture](assets/hero-azure-ai.png){ .chapter-thumb }
+-   ![Chapter 5 thumbnail - architecture diagram for Azure and AI extensions](assets/architecture-diagram.png){ .chapter-thumb }
 
     <span class="chapter-eyebrow">Chapter 5</span>
     ### Azure + AI Extension
@@ -117,7 +117,7 @@ Before you start Chapter 1, make sure you have:
 
     [Read chapter →](chapter-5-azure-and-ai.md)
 
--   ![Chapter 6 thumbnail - a curated bookshelf of learning resources and next-step pathways](assets/hero-resources.png){ .chapter-thumb }
+-   ![Chapter 6 thumbnail - curated workshop resources and next steps](assets/agenda.png){ .chapter-thumb }
 
     <span class="chapter-eyebrow">Chapter 6</span>
     ### Resources and Next Steps
