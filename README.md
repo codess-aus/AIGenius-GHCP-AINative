@@ -82,6 +82,8 @@ You are the **tech lead** in this workflow. Copilot handles the *how*. You defin
   ├── exercises/
   │   ├── 01-write-an-issue/           # Task: write a well-formed issue (cloud/AI options)
   │   ├── 02-assign-to-copilot/        # Task: assign + observe
+  │   ├── 02a-fleet-mode/              # Optional: parallel sub-tasks with /fleet
+  │   ├── 02b-squad-framework/         # Optional: persistent agent team with /squad
   │   ├── 03-review-a-pr/              # Task: review and comment on a PR
   │   ├── 04-iterate/                  # Task: iterate via PR comments
   │   └── 05-azure-and-ai/             # Stretch: pre-written issues for Azure + OpenAI features
