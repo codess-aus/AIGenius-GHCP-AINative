@@ -1,8 +1,6 @@
 # Chapter 4 - Iterate via PR Comments
 
-<!-- HERO IMAGE PLACEHOLDER: prompt below -->
-<!-- IMAGE PROMPT: Flat illustration of two speech bubbles with looping refresh arrows between a human silhouette and a robot icon, both pointing at a shared document that's visibly improving (draft to polished). Dark navy background, gold accents, 16:9. -->
-<!-- ALT TEXT: Human and AI exchanging feedback in an iterative loop. -->
+![Human and AI exchanging feedback in an iterative loop.](assets/4-iterate.png)
 
 Iteration is where AI-native teams gain speed without giving up quality. Good comments transform "almost right" output into production-ready work.
 

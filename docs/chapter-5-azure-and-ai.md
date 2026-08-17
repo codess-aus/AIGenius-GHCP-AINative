@@ -1,6 +1,6 @@
 # Chapter 5 - Azure + AI Extension
 
-![Architecture diagram showing storage and AI integration layers for the workshop app](assets/architecture-diagram.png)
+![Extending the workshop app with Azure Storage and Azure OpenAI](assets/5-azure.png)
 
 This chapter introduces production-flavored requirements: cloud SDKs, credentials, resilience, and optional AI augmentation.
 

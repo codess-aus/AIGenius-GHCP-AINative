@@ -1,8 +1,6 @@
 # Chapter 3 - Review a Draft PR
 
-<!-- HERO IMAGE PLACEHOLDER: prompt below -->
-<!-- IMAGE PROMPT: Flat illustration of a magnifying glass inspecting a pull request diff panel on a laptop screen, with a floating checklist (checkmarks and a shield icon for security) beside it. Dark navy background, gold accents, 16:9. -->
-<!-- ALT TEXT: Reviewer inspecting a pull request diff with a quality checklist. -->
+![Reviewer inspecting a pull request diff with a quality checklist.](assets/3-review.png)
 
 AI-generated code can look polished while still being wrong. Your review is the quality gate that protects reliability, security, and maintainability.
 
