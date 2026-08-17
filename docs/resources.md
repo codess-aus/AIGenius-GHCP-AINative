@@ -1,8 +1,6 @@
 # Chapter 6 - Resources and Next Steps
 
-<!-- HERO IMAGE PLACEHOLDER: prompt below -->
-<!-- IMAGE PROMPT: Flat illustration of an open book or curated bookshelf with glowing icons floating above representing certification badges, community/agent icons, and a signpost pointing forward -->
-<!-- ALT TEXT: Curated bookshelf of workshop resources with icons for certifications and community projects. -->
+![Fleet of Copilot coding agents working together on curated workshop resources and next steps.](assets/fleet.png)
 
 You've completed the full AI-native development loop: write an issue, assign it to Copilot, review the draft PR, iterate via comments, and merge. Use these links to keep building that skill after today.
 
