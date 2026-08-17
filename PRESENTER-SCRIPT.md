@@ -1,7 +1,7 @@
-# AI Genius Episode 1 — Presenter Script
+# AI Genius Episode 1 - Presenter Script
 
 **"Code with AI: GitHub Copilot for AI-Native Coding Workflows"**
-1 hour · All skill levels
+1 hour · All skill levels · Livestream on YouTube
 
 ---
 
@@ -19,39 +19,41 @@
 | 0:55 | Stretch (optional) | Azure Table Storage + Azure OpenAI | Architecture diagram | Code walkthrough, no live Azure needed |
 | 0:58 | Closing | 5 Golden Rules + call to action | None | None |
 
-> **Timing note:** the core loop (Segments 1 to 7) fits inside 55 minutes. Segment 8 (Azure stretch) is a flexible filler, use it if Exercise 02 to 04 finish early, or compress it to a 1 minute pointer to the exercises folder if you're running behind. This keeps the session honest to its 60 minute billing even when a live Copilot session runs long.
+> **Timing note:** the core loop (Segments 1 to 7) fits inside 55 minutes. Segment 8 (Azure stretch) is a flexible filler, use it if Exercise 02 to 04 finish early, or compress it to a 1 minute pointer if you're running behind.
+
+> **Livestream note:** there is no in-room audience. Everyone watching is in YouTube chat. Have a moderator (or a second monitor) watching chat throughout so questions can be answered live without breaking your screen share flow. If you're solo-hosting, pin a message early on: "Drop your questions in chat, I'll pause between segments to read a few out."
 
 ---
 
-## Segment 1 — Opening (0:00 to 0:05)
+## Segment 1 - Opening (0:00 to 0:05)
 
 *Screen: Title slide or repo README*
 
 **SAY:**
-> Welcome everyone. My name is Michelle. I'm a Developer Engagement Lead at Microsoft.
+> Welcome everyone, thanks for tuning in. My name is Michelle. I'm a Developer Engagement Lead at Microsoft.
 >
 > Today we're going to do something a little different. I'm not going to teach you GitHub Copilot features. I'm going to change how you think about writing code.
 >
-> When I say "AI-native", I don't mean using Copilot to autocomplete a line of code. I mean treating it as a junior developer on your team, one that is incredibly fast, very literal, and needs clear direction to do its best work.
+> When I say "AI-native", I don't mean using Copilot to autocomplete a line of code. I mean treating it as a junior developer on your team, one that is incredibly fast, very literal, and needs clear direction to do great work.
 >
 > In this session, you are the tech lead. You define **what** to build and **why**. Copilot handles **how**. Your job is to write good briefs and do smart reviews.
 >
-> By the end of this hour, you will have completed the full AI-native loop: write issue, delegate to Copilot, review the PR, iterate.
+> By the end of this hour, you will have watched the full AI-native loop happen live: write issue, delegate to Copilot, review the PR, iterate. If you've got the repo forked, follow along in your own environment as we go, and drop your progress or questions in the chat.
 
-> 🔎 **Fun fact to drop here:** GitHub Copilot's coding agent runs your assigned issue inside an isolated GitHub Actions VM. It genuinely cannot touch production, cannot push directly to protected branches, and cannot merge on its own. Everything it does is captured in a session log you can read start to finish. What you're about to watch is the same sandboxed, auditable process a real engineering team would use, not a stage trick.
+> 🔎 **Fun fact to drop here:** GitHub Copilot's coding agent runs your assigned issue inside an isolated GitHub Actions VM. It genuinely cannot touch production, cannot push directly to protected branches, and cannot merge its own PR. It's sandboxed by design.
 
-> 💡 **Pause here and ask:** "How many of you have used GitHub Copilot for code completion?" Then: "How many have used Copilot to write an entire feature from a GitHub Issue?" The second number is usually much smaller, that gap is exactly what this session closes.
+> 💡 **Chat prompt:** ask the chat "How many of you have used GitHub Copilot for code completion? Type C in chat." Then: "How many have used Copilot to write an entire feature from a GitHub Issue? Type F in chat." Read out the split, the F count is usually a lot smaller, that gap is exactly what today closes.
 
 ---
 
-## Segment 2 — Live Demo: The Starter App (0:05 to 0:10)
+## Segment 2 - Live Demo: The Starter App (0:05 to 0:10)
 
 *Screen: Terminal in the starter-app directory*
 
 **SAY:**
-> Let me show you what we're working with. This is a Python command-line task manager. It sounds simple, but it's a real codebase with priorities, tags, due dates, timestamps, and an automated test suite behind it.
+> Let me show you what we're working with. This is a Python command-line task manager. It sounds simple, but it's a real codebase with priorities, tags, due dates, timestamps, and an automated test suite.
 >
-> This is the app you'll be extending today using Copilot.
+> This is the app we'll be extending today using Copilot. If you've forked the repo, feel free to run these same commands locally as I go, and let me know in chat if anything doesn't work for you so I can help troubleshoot.
 
 **DO, type these commands live:**
 
@@ -79,7 +81,7 @@ python app.py list --overdue
 
 ---
 
-## Segment 3 — Context: Instructions & Tests (0:10 to 0:15)
+## Segment 3 - Context: Instructions & Tests (0:10 to 0:15)
 
 *Screen: VS Code or GitHub, `.github/copilot-instructions.md`*
 
@@ -89,8 +91,8 @@ python app.py list --overdue
 > Think of `copilot-instructions.md` as the onboarding document you'd give a new developer. It tells Copilot what libraries to use, how to handle secrets, what the test approach is, and what "done" looks like.
 
 **DO:**
-1. Open `.github/copilot-instructions.md` on screen
-2. Point out these specific sections:
+1. Share your screen on `.github/copilot-instructions.md`
+2. Point out these specific sections on screen, narrating clearly since viewers can't lean over your shoulder:
    - The task schema (the JSON example)
    - The Azure Table Storage section (SDK name, env var names)
    - The "Never hardcode credentials" rule
@@ -109,25 +111,23 @@ python app.py list --overdue
 python -m pytest tests/ -v
 ```
 
-Point out: all tests passing, in under a second.
+Narrate what viewers are seeing on screen: all tests passing, in under a second.
 
 **SAY:**
 > When Copilot adds the Azure backend, it has to keep every one of these tests passing. That's the safety net. And it will write new tests for the new code too.
 
-> 🔎 **Interesting fact:** keeping the dependency list minimal (`click`, `rich`, `pytest`) isn't just good practice for humans, it directly improves what an AI coding agent can do with your repo. Fewer, well-known libraries mean less ambiguity for the model to resolve when it explores your codebase.
+> 🔎 **Interesting fact:** keeping the dependency list minimal (`click`, `rich`, `pytest`) isn't just good practice for humans, it directly improves what an AI coding agent can do with your repo. Fewer dependencies means less surface area for it to misread or misuse.
 
 ---
 
-## Segment 4 — Exercise 01: Write the Issue (0:15 to 0:25)
+## Segment 4 - Exercise 01: Write the Issue (0:15 to 0:25)
 
 *Screen: GitHub Issues tab, New Issue form*
 
 **SAY:**
-> Now it's your turn. Open the Issues tab on your forked repo and click New Issue.
+> Now I'm going to write an issue live on screen, and I'll talk through each section as I fill it in. If you've forked the repo, open your own Issues tab and write along with me, or write your own variation, either way, paste your issue link or a screenshot in chat and I'll pull a few up later.
 >
 > The golden rule of AI-native development is this: **your issue IS your prompt.** If you write a vague issue, you get vague code. If you write a precise specification, you get precise code.
->
-> I'm going to write an issue live and talk through each section as I fill it in.
 
 **DO, type or paste this issue:**
 
@@ -163,29 +163,29 @@ Point out: all tests passing, in under a second.
 >
 > A human developer might fill in those gaps from experience. Copilot takes you literally. The more you specify, the closer the output is to what you actually want.
 >
-> You've got 5 minutes. Either follow along with the same issue, or write your own from Exercise 01 Option B, C, or D in the exercises folder.
+> Take 5 minutes if you're following along in your own fork, write the same issue or try Option B, C, or D from the exercises folder. I'll keep talking through the reasoning while you write, and I'll check chat for questions.
 
 > 🔎 **Interesting fact:** this is essentially prompt engineering wearing a GitHub Issues costume. The same principles, specificity, examples, constraints, that make a good LLM prompt make a good AI-native issue.
 
-> 👀 **WATCH FOR:** walk around the room while participants write. Look for issues that are vague in the Acceptance Criteria section, gently prompt: "What exactly would done look like? What would you check before merging?"
+> 👀 **WATCH FOR:** keep an eye on chat while people share their draft issues or ask questions. If someone posts an issue that's vague in the Acceptance Criteria section, gently prompt in chat: "What exactly would done look like? What would you check in the PR to know it's finished?"
 
 ---
 
-## Segment 5 — Exercise 02: Assign to Copilot (0:25 to 0:30)
+## Segment 5 - Exercise 02: Assign to Copilot (0:25 to 0:30)
 
 *Screen: GitHub Issue, Assignees panel on the right*
 
 **SAY:**
 > Now for the part that still feels a bit like magic the first time you see it.
 >
-> Open the issue you just submitted. On the right side, find the Assignees panel. Click the gear icon. Search for "Copilot" and assign it.
+> Open the issue you just submitted. On the right side, find the Assignees panel. Click the gear icon. Search for "Copilot" and assign it. If you're following along, do the same on your own issue now.
 
 **DO:**
-1. Demonstrate on your own issue
+1. Demonstrate on your own issue, on screen
 2. Click the Assignees gear, select Copilot
 3. Show the confirmation comment that appears on the issue
 4. Open the GitHub Copilot App on your desktop, go to My Work, find the active session
-5. Put this on the main screen so everyone can see Copilot working
+5. Keep this on the main screen share so everyone watching can see Copilot working in real time
 
 **SAY:**
 > While we wait, watch what it does first. It doesn't start coding immediately. It **explores**. It reads `copilot-instructions.md`. It reads `app.py`. It reads the existing tests.
@@ -193,15 +193,16 @@ Point out: all tests passing, in under a second.
 > That's exactly what a good developer does, understand the codebase before touching it.
 
 > 👀 **WATCH FOR:**
-> - Point out when Copilot references `copilot-instructions.md`, this is the payoff for Segment 3
+> - Point out on screen when Copilot references `copilot-instructions.md`, this is the payoff for Segment 3
 > - Point out when it reads the existing tests, it's learning the test patterns
-> - If the PR isn't ready by 0:30, don't wait, move to Exercise 03 framing and return when it's ready
+> - If the PR isn't ready by 0:30, don't wait, move to Exercise 03 framing and return to it once it's ready
+> - Keep glancing at chat, this is a natural point for questions since there's a bit of a wait
 
-> 💡 **Ask participants:** "What did you notice about how Copilot explored the codebase? What did it look at first?"
+> 💡 **Chat prompt:** ask chat "What did you notice about how Copilot explored the codebase? What did it look at first?" and read out a couple of answers.
 
 ---
 
-## Segment 6 — Exercise 03: Review the PR (0:30 to 0:45)
+## Segment 6 - Exercise 03: Review the PR (0:30 to 0:45)
 
 *Screen: Pull Requests tab, draft PR opened by Copilot*
 
@@ -210,12 +211,12 @@ Point out: all tests passing, in under a second.
 >
 > Copilot is very good at writing plausible code. Plausible is not the same as correct, secure, or exactly what you asked for. You are the quality gate.
 >
-> Before we look at any code, read the session log in the PR description. Copilot explains every decision it made. This is like reading a PR summary from a junior developer, you understand the reasoning before you review the diff.
+> Before we look at any code, let's read the session log in the PR description together. Copilot explains every decision it made. This is like reading a PR summary from a junior developer, you understand the reasoning before you judge the output.
 
 **DO:**
-1. Open the draft PR
+1. Open the draft PR on screen
 2. Read the session log aloud (at least the first paragraph)
-3. Go to "Files changed" and walk through the checklist:
+3. Go to "Files changed" and walk through the checklist, narrating clearly for viewers:
 
 | Check | What to look for |
 |-------|-----------------|
@@ -226,21 +227,21 @@ Point out: all tests passing, in under a second.
 | New tests exist | Tests mock Azure calls, no real API calls |
 
 **SAY:**
-> I want you to find at least one thing to comment on. Not because Copilot did it wrong, maybe it didn't, but because the skill of writing precise PR feedback is itself what we're practising.
+> If you're following along on your own PR, find at least one thing to comment on. Not because Copilot did it wrong, maybe it didn't, but because the skill of writing precise PR feedback is itself what we're practising.
 >
 > Good PR comments are **specific.** Not "this could be better." Instead: "The error message on line 42 says connection failed but doesn't tell the user what env var to set. Can you include the variable name in the message?"
 
 **DO:**
 1. Demonstrate leaving a comment on a specific line in Files changed
-2. Give participants 5 minutes to review and leave their own comment
+2. Give it about 5 minutes for anyone following along to review their own PR and leave a comment, meanwhile invite chat to paste an example comment they'd leave so you can read a few out
 
 > 🔎 **Interesting fact:** this checklist habit is what separates AI-native teams that ship reliable software from teams that ship plausible-looking bugs. Plausible is not the same as correct, and only a human reviewer catches that gap.
 
-> 👀 **WATCH FOR:** redirect vague comments like "improve this", ask "What specifically? What would the improved version look like?" Celebrate anyone who catches a real security issue.
+> 👀 **WATCH FOR:** if chat posts a vague comment like "improve this", reply in chat asking "What specifically? What would the improved version look like?" Call out anyone who spots a real security issue, a hardcoded secret or similar, that's a great teaching moment to read aloud.
 
 ---
 
-## Segment 7 — Exercise 04: Iterate (0:45 to 0:55)
+## Segment 7 - Exercise 04: Iterate (0:45 to 0:55)
 
 *Screen: PR, Copilot responding to comments*
 
@@ -250,9 +251,9 @@ Point out: all tests passing, in under a second.
 > You don't throw away the work and start again. You give precise feedback and let it improve.
 
 **DO:**
-1. Watch Copilot pick up your comment and update the branch
+1. Watch Copilot pick up your comment and update the branch, on screen
 2. Once it pushes the update, re-review the specific section you commented on
-3. Ask yourself:
+3. Ask yourself, and narrate for viewers:
    - Did it address the feedback correctly?
    - Did it introduce any new issues in the process?
    - Is the PR ready to merge?
@@ -267,18 +268,18 @@ Point out: all tests passing, in under a second.
 **SAY:**
 > Notice: **Copilot cannot merge.** The human is always the final gate. AI-native does not mean AI-autonomous. It means AI-collaborative. That's a deliberate design decision, not a limitation.
 >
-> How many rounds did it take? One? Three? The answer depends almost entirely on how precisely you wrote the original issue.
+> How many rounds did it take? One? Three? Drop your round count in chat, the answer depends almost entirely on how precisely you wrote the original issue.
 
 ---
 
-## Segment 8 — Stretch Goal: Azure + AI (0:55 to 0:58, optional filler)
+## Segment 8 - Stretch Goal: Azure + AI (0:55 to 0:58, optional filler)
 
 *Screen: code walkthrough, no live Azure account required*
 
 > **Use this segment only if Exercises 02 to 04 finished with time to spare. Otherwise, skip straight to Closing and point to Exercise 05 as homework.**
 
 **SAY:**
-> Let's look at what happens when the ask gets harder. There are two pre-written issues in the exercises folder: migrating storage to Azure Table Storage, which we just did, and adding Azure OpenAI tag suggestions.
+> Let's look at what happens when the ask gets harder. There are two pre-written issues in the exercises folder: migrating storage to Azure Table Storage, which we just did, and adding Azure OpenAI tag suggestions, which is the stretch goal.
 
 **DO, show the architecture pattern:**
 
@@ -290,22 +291,22 @@ CLI (app.py)
 ```
 
 **SAY:**
-> The key design principle here is zero breaking changes. If `AZURE_STORAGE_CONNECTION_STRING` isn't set, it falls back to local JSON. Same for OpenAI, if the env vars aren't there, the app degrades gracefully rather than breaking.
+> The key design principle here is zero breaking changes. If `AZURE_STORAGE_CONNECTION_STRING` isn't set, it falls back to local JSON. Same for OpenAI, if the env vars aren't there, the app degrades gracefully instead of crashing.
 >
-> When you review this kind of PR, look extra hard for one thing: hardcoded credentials. That's the single most critical failure mode when delegating cloud integration work to an AI agent. Everything goes through environment variables and `python-dotenv`, never in source.
+> When you review this kind of PR, look extra hard for one thing: hardcoded credentials. That's the single most critical failure mode when delegating cloud integration work to an AI agent. Everything else is recoverable, a leaked secret is not.
 
-> 🔎 **Fun fact:** asking Copilot to mock cloud calls in tests, using `unittest.mock`, rather than hitting real Azure resources, is both a testing best practice and a cost and safety control. Your CI shouldn't be able to accidentally spin up billable cloud resources.
+> 🔎 **Fun fact:** asking Copilot to mock cloud calls in tests, using `unittest.mock`, rather than hitting real Azure resources, is both a testing best practice and a cost and safety control. Your CI pipeline never needs a real Azure account to pass.
 
 ---
 
-## Segment 9 — Closing (0:58 to 1:00)
+## Segment 9 - Closing (0:58 to 1:00)
 
 *Screen: README, The 5 Golden Rules*
 
 **SAY:**
-> Let's land the plane. You just completed the full AI-native development loop.
+> Let's land the plane. We just walked through the full AI-native development loop together.
 >
-> You wrote the issue. You delegated to Copilot. You reviewed the PR. You iterated via comments. You merged.
+> We wrote the issue. We delegated to Copilot. We reviewed the PR. We iterated via comments. We merged.
 >
 > That is the loop. And the better you get at each step, the faster and higher-quality your output becomes.
 
@@ -318,36 +319,41 @@ CLI (app.py)
 5. **Stay in the loop**, check the session log, understand what Copilot did and why.
 
 **SAY:**
-> For those of you who want to go further: Exercise 05 in the exercises folder has a ready-to-use issue for adding Azure OpenAI smart tag suggestions. Your homework: fork this repo, write the issue, assign it to Copilot, and run the loop on your own.
+> For those of you who want to go further: Exercise 05 in the exercises folder has a ready-to-use issue for adding Azure OpenAI smart tag suggestions. Your homework: fork this repo, write the issue, and try the loop yourself.
 >
 > You now have the skills to do that loop on any codebase, your work projects, your personal projects, anything.
 >
-> Thank you. I'll take questions.
+> Thanks for watching, and thanks for all the great questions in chat today. I'll stick around for a few more minutes to answer anything we didn't get to.
 
 ---
 
 ## Emergency / Fallback Notes
 
 **If Copilot is slow to start:**
-- Show `copilot-instructions.md` and exercise READMEs while waiting, the preparation content fills 5 to 10 minutes naturally
-- Ask participants to review the Exercise 05 pre-written issue and discuss: "What would you change? What's unclear?"
+- Share `copilot-instructions.md` and exercise READMEs on screen while waiting, the preparation content fills 5 to 10 minutes naturally
+- Invite chat to review the Exercise 05 pre-written issue and discuss in chat: "What would you change? What's unclear?"
 
 **If the PR contains a bug worth showing:**
 - Use it. A real bug caught in review is the best possible demo of why human review matters
-- Say: *"This is the payoff. Copilot is fast, but not infallible. You caught this, that's your value in the loop."*
+- Say: *"This is the payoff. Copilot is fast, but not infallible. We caught this on review, that's our value in the loop."*
 
-**If someone asks about `copilot-instructions.md` being a security risk:**
+**If chat asks about `copilot-instructions.md` being a security risk:**
 - The file lives in `.github/`, it's part of the repo, just like the README. No secrets go in here, ever.
 - Secrets live in environment variables or Azure Key Vault. That's why the instructions explicitly say so.
 
-**If someone asks whether Copilot's coding agent can be a security risk in general:**
+**If chat asks whether Copilot's coding agent can be a security risk in general:**
 - The agent runs inside an isolated GitHub Actions VM per session, it has no persistent access beyond that run and cannot merge, push to protected branches, or touch production directly.
 - The session log gives you a full audit trail of every decision and file it touched.
 
-**If participants run out of time on Exercise 01:**
-- It's fine, the Azure issue template in Exercise 05 is pre-written. They can copy-paste it.
+**If viewers run out of time on Exercise 01:**
+- It's fine, the Azure issue template in Exercise 05 is pre-written. They can copy-paste it after the stream.
 - The learning is in the *reading and understanding* the acceptance criteria, not just in typing it.
 
 **If running behind schedule overall:**
 - Cut Segment 8 (Azure + AI stretch) entirely, it is designed as optional filler, not core content.
-- Compress Segment 3 (Context) by skipping the live `pytest` run and just stating the test count and pass rate.
+- Compress Segment 3 (Context) by skipping the live `pytest` run and just stating the test count and pass rate on screen.
+
+**Livestream-specific fallbacks:**
+- If chat is quiet, seed it yourself: "If you're watching, drop a comment with your priority level default, high, medium, or low."
+- If there's stream lag or a technical hiccup, narrate what's happening rather than going silent, viewers can't see your screen freeze the way an in-room audience would notice a stall.
+- If a moderator is present, agree beforehand on a signal (a specific emoji or phrase) they'll use in your own chat window to flag an urgent question versus a general comment.
