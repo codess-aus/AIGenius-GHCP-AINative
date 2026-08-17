@@ -142,6 +142,8 @@ It's a good next stop once you've finished this workshop and want to go beyond t
 
 ## Go Deeper (Optional): Scaling Up, From One Issue to a Fleet
 
+![Fleet of Copilot coding agents working together on curated workshop resources and next steps.](assets/fleet.png)
+
 !!! warning "Token cost warning"
     Everything below is heavier on AI usage than the one-issue, one-agent loop you just ran. `/fleet` and `/squad` both spin up **multiple** agent sessions instead of one. If you're on a personal/paid plan and don't have a real project in mind to justify it, it's fine to just read this section and skip running it live.
 
