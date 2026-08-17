@@ -14,12 +14,13 @@
 | 0:10 | Context | `copilot-instructions.md` + test suite | `.github/copilot-instructions.md` | Terminal: `pytest` |
 | 0:15 | Exercise 01 | Write a well-formed issue together | Browser: Issues tab, template | None |
 | 0:25 | Exercise 02 | Assign to Copilot, watch it work | None | Browser + Copilot App |
-| 0:30 | Exercise 03 | Review the generated PR | None | Browser: PR diff, session log |
-| 0:45 | Exercise 04 | Iterate via PR comments | None | Browser: PR comments, merge |
+| 0:30 | Concept | Scaling up: from one issue to a fleet (`/fleet` and `/squad`) | Architecture / concept slide | Optional: live `/fleet` demo, time permitting |
+| 0:38 | Exercise 03 | Review the generated PR | None | Browser: PR diff, session log |
+| 0:48 | Exercise 04 | Iterate via PR comments | None | Browser: PR comments, merge |
 | 0:55 | Stretch (optional) | Azure Table Storage + Azure OpenAI | Architecture diagram | Code walkthrough, no live Azure needed |
 | 0:58 | Closing | 5 Golden Rules + call to action | None | None |
 
-> **Timing note:** the core loop (Segments 1 to 7) fits inside 55 minutes. Segment 8 (Azure stretch) is a flexible filler, use it if Exercise 02 to 04 finish early, or compress it to a 1 minute pointer if you're running behind.
+> **Timing note:** the core loop (Segments 1 to 7, including the Fleet/Squad concept segment) fits inside 55 minutes. The *talking points* in the Fleet/Squad segment are not optional, they're core content, but the *live demo* inside that segment is flexible filler, run it if Exercise 02 finishes early, or skip straight to the concept explanation and slides if you're tight on time. Segment 8 (Azure stretch) is also a flexible filler, use it if Exercise 02 to 04 finish early, or compress it to a 1 minute pointer if you're running behind.
 
 > **Livestream note:** there is no in-room audience. Everyone watching is in YouTube chat. Have a moderator (or a second monitor) watching chat throughout so questions can be answered live without breaking your screen share flow. If you're solo-hosting, pin a message early on: "Drop your questions in chat, I'll pause between segments to read a few out."
 
@@ -195,21 +196,70 @@ Narrate what viewers are seeing on screen: all tests passing, in under a second.
 > 👀 **WATCH FOR:**
 > - Point out on screen when Copilot references `copilot-instructions.md`, this is the payoff for Segment 3
 > - Point out when it reads the existing tests, it's learning the test patterns
-> - If the PR isn't ready by 0:30, don't wait, move to Exercise 03 framing and return to it once it's ready
+> - If the PR isn't ready by 0:30, don't wait, move straight into Segment 5B, the wait time is exactly when a concept segment earns its keep
 > - Keep glancing at chat, this is a natural point for questions since there's a bit of a wait
 
 > 💡 **Chat prompt:** ask chat "What did you notice about how Copilot explored the codebase? What did it look at first?" and read out a couple of answers.
 
 ---
 
-## Segment 6 - Exercise 03: Review the PR (0:30 to 0:45)
+## Segment 5B - Concept: Scaling Up, From One Issue to a Fleet (0:30 to 0:38)
+
+*Screen: Concept slide or architecture diagram, terminal optional*
+
+> **This segment is core content, not optional.** While Copilot works in the background on the issue we just assigned, this is the natural moment to zoom out and talk about what happens once you outgrow "one issue, one agent, one PR". The *talking points* below must be covered live. The *live `/fleet` demo* inside this segment is the only optional part, run it only if there's time, otherwise describe it from the slide and move on.
+
+**SAY:**
+> So far we've done the smallest possible unit of AI-native work: one issue, one agent, one PR. That's the right place to start, but it doesn't scale to a real sprint, where you might have ten issues ready to go at once.
+>
+> This is where `/fleet` and `/squad` come in. They're two different answers to the same question: "How do I go from one developer directing one agent, to a whole team directing many agents at once?"
+
+**SAY, explain `/fleet`:**
+> `/fleet` is a Copilot CLI command built for **parallel, stateless execution**. You give it one objective, and an orchestrator agent breaks that objective into independent sub-tasks, checks which ones depend on each other, and dispatches the independent ones to multiple sub-agents at the same time. As each wave of tasks finishes, it unblocks the next wave, until everything is done and the results are pulled back together.
+>
+> Think of it like this: if our single Copilot agent today is one developer picking up one issue, `/fleet` is like assigning ten related issues at once and having ten short-lived contractors work them in parallel, none of whom remember each other or the codebase tomorrow. They just get the job done and hand back the result.
+
+**SAY, explain `/squad`:**
+> `/squad` is a different shape of answer. It's not a single CLI command, it's an open source framework you install into your repo that creates a **persistent team of named agents**. Unlike Fleet's disposable contractors, Squad agents remember prior decisions, review each other's work, and enforce your team's protocols over days or weeks, not just for one task.
+>
+> If Fleet is contractors for a single sprint, Squad is closer to hiring permanent specialists onto your team, they build context over time, and they can even use Fleet internally when they need a burst of parallel, throwaway work.
+
+**SAY, connect it to cloud-native AI in the SDLC:**
+> Here's why this matters beyond the novelty. These two patterns map almost exactly onto ideas you already use in cloud-native architecture.
+>
+> `/fleet` is **horizontal scaling for cognitive work**. A cloud-native app scales out stateless compute instances behind a load balancer to absorb load, `/fleet` scales out stateless sub-agents to absorb a backlog of independent tasks. No shared memory, no coordination overhead, just parallel throughput.
+>
+> `/squad` is closer to a **long-lived service mesh with persistent state**. Instead of ephemeral pods, you have specialized, addressable agents with their own memory and responsibilities, coordinated by an orchestrator, reviewing each other the way services enforce contracts on each other.
+>
+> And the wave-based dependency scheduling inside `/fleet`, run what's unblocked, wait, run the next wave, is conceptually the same DAG scheduling you already know from CI/CD pipelines or a Kubernetes Job with dependencies. We're not inventing a new mental model here, we're applying a mental model you already have, cloud-native, stateless-versus-stateful, orchestration, DAGs, to how we direct AI agents through the SDLC.
+>
+> The takeaway: the single-issue loop we're doing today is the "hello world". `/fleet` and `/squad` are how that same loop scales to a real team's backlog without you personally babysitting every single PR.
+
+> 🔎 **Interesting fact:** neither `/fleet` nor `/squad` change the core safety model. Every sub-agent, whether disposable (Fleet) or persistent (Squad), still opens a PR, still cannot merge its own work, and still runs inside the same sandboxed, isolated environment as the single-agent workflow we're using today. Scaling out the number of agents does not scale away the human review gate, it just means you're reviewing more PRs from more agents, not fewer humans in the loop.
+
+**DO (optional live demo, time permitting only):**
+```bash
+# Example only, run this in the Copilot CLI if time allows
+/fleet Break the remaining Exercise 05 issue into independent sub-tasks
+       (Azure OpenAI client setup, tag suggestion function, tests) and
+       work them in parallel
+```
+> If you don't have time to run this live, simply describe it from the slide: point out that the orchestrator will split the objective, dispatch the independent pieces at once, and reassemble the result, then move straight into Segment 6.
+
+> 👀 **WATCH FOR:** chat will likely ask "does this mean I lose control?" Reinforce: no, every sub-agent's output still lands as a reviewable PR. More agents means more parallel proposals, not less human oversight.
+
+> 💡 **Chat prompt:** ask chat "In your team, is your bottleneck today writing enough good issues, or reviewing enough PRs? `/fleet` and `/squad` only help if you already know how to do Exercise 01 and Exercise 03 well." This is a good moment to tie back to the Golden Rules coming in the Closing segment.
+
+---
+
+## Segment 6 - Exercise 03: Review the PR (0:38 to 0:48)
 
 *Screen: Pull Requests tab, draft PR opened by Copilot*
 
 **SAY:**
 > Copilot has opened a draft PR. This is where your most important skill in AI-native development comes into play: **critical review**.
 >
-> Copilot is very good at writing plausible code. Plausible is not the same as correct, secure, or exactly what you asked for. You are the quality gate.
+> Copilot is very good at writing plausible code. Plausible is not the same as correct, secure, or exactly what you asked for. You are the quality gate. That's true whether it's one agent's PR, like this one, or ten PRs coming back from a `/fleet` run, the review discipline doesn't change, only the volume does.
 >
 > Before we look at any code, let's read the session log in the PR description together. Copilot explains every decision it made. This is like reading a PR summary from a junior developer, you understand the reasoning before you judge the output.
 
@@ -241,7 +291,7 @@ Narrate what viewers are seeing on screen: all tests passing, in under a second.
 
 ---
 
-## Segment 7 - Exercise 04: Iterate (0:45 to 0:55)
+## Segment 7 - Exercise 04: Iterate (0:48 to 0:55)
 
 *Screen: PR, Copilot responding to comments*
 
@@ -266,7 +316,7 @@ Narrate what viewers are seeing on screen: all tests passing, in under a second.
 > - *"Can you extract the Azure entity mapping into its own function? It's mixed in with the save logic."*
 
 **SAY:**
-> Notice: **Copilot cannot merge.** The human is always the final gate. AI-native does not mean AI-autonomous. It means AI-collaborative. That's a deliberate design decision, not a limitation.
+> Notice: **Copilot cannot merge.** The human is always the final gate. AI-native does not mean AI-autonomous. It means AI-collaborative. That's a deliberate design decision, not a limitation, and as we covered a few minutes ago, that stays true whether you're directing one agent or a whole fleet of them.
 >
 > How many rounds did it take? One? Three? Drop your round count in chat, the answer depends almost entirely on how precisely you wrote the original issue.
 
@@ -304,11 +354,11 @@ CLI (app.py)
 *Screen: README, The 5 Golden Rules*
 
 **SAY:**
-> Let's land the plane. We just walked through the full AI-native development loop together.
+> Let's land the plane. We just walked through the full AI-native development loop together, and we zoomed out to see how that loop scales from one agent to a fleet or a squad of them.
 >
-> We wrote the issue. We delegated to Copilot. We reviewed the PR. We iterated via comments. We merged.
+> We wrote the issue. We delegated to Copilot. We reviewed the PR. We iterated via comments. We merged. And we saw that scaling up to `/fleet` or `/squad` doesn't change any of those steps, it just multiplies them.
 >
-> That is the loop. And the better you get at each step, the faster and higher-quality your output becomes.
+> That is the loop. And the better you get at each step, the faster and higher-quality your output becomes, at any scale.
 
 **Read the 5 Golden Rules aloud:**
 
@@ -319,9 +369,9 @@ CLI (app.py)
 5. **Stay in the loop**, check the session log, understand what Copilot did and why.
 
 **SAY:**
-> For those of you who want to go further: Exercise 05 in the exercises folder has a ready-to-use issue for adding Azure OpenAI smart tag suggestions. Your homework: fork this repo, write the issue, and try the loop yourself.
+> For those of you who want to go further: Exercise 05 in the exercises folder has a ready-to-use issue for adding Azure OpenAI smart tag suggestions. Your homework: fork this repo, write the issue, and try the loop yourself, then once you're comfortable, try running a few related issues through `/fleet` to see the scaling pattern in action.
 >
-> You now have the skills to do that loop on any codebase, your work projects, your personal projects, anything.
+> You now have the skills to do that loop on any codebase, your work projects, your personal projects, anything, whether it's one issue or ten.
 >
 > Thanks for watching, and thanks for all the great questions in chat today. I'll stick around for a few more minutes to answer anything we didn't get to.
 
@@ -344,12 +394,14 @@ CLI (app.py)
 **If chat asks whether Copilot's coding agent can be a security risk in general:**
 - The agent runs inside an isolated GitHub Actions VM per session, it has no persistent access beyond that run and cannot merge, push to protected branches, or touch production directly.
 - The session log gives you a full audit trail of every decision and file it touched.
+- This holds true for `/fleet` sub-agents and `/squad` agents too, more agents does not mean less isolation or less review.
 
 **If viewers run out of time on Exercise 01:**
 - It's fine, the Azure issue template in Exercise 05 is pre-written. They can copy-paste it after the stream.
 - The learning is in the *reading and understanding* the acceptance criteria, not just in typing it.
 
 **If running behind schedule overall:**
+- Cut the live `/fleet` demo inside Segment 5B entirely, but still cover the talking points, that segment's explanation is core content and should not be dropped, only its optional demo.
 - Cut Segment 8 (Azure + AI stretch) entirely, it is designed as optional filler, not core content.
 - Compress Segment 3 (Context) by skipping the live `pytest` run and just stating the test count and pass rate on screen.
 
