@@ -6,7 +6,7 @@ Assigning an issue is where the workflow shifts from maker mode to lead mode. Yo
 
 ## Goal
 
-Delegate the issue you wrote in Chapter 1 to Copilot and observe it working in real time.
+Delegate the issue you wrote in Chapter 1 to Copilot, observe it working in real time, then use Copilot Chat and the Copilot CLI to build your own understanding of the codebase while the agent works.
 
 ## The Mindset Shift
 
@@ -37,6 +37,29 @@ This isolation matters: no direct access to your local machine, no silent merge,
 
 Think of this file as your team's "house rules" for every AI-generated change.
 
+## The GitHub Copilot App: what it is and when to use it
+
+The **GitHub Copilot App** is a standalone desktop and mobile client (separate from your IDE) that gives you a dashboard for everything Copilot is doing across your repositories. It is *not* the same thing as the Copilot extension inside VS Code, it is a control plane for the asynchronous, agentic side of Copilot.
+
+Use the Copilot App when you want to:
+
+- **Track active sessions** across multiple repos and issues from one place (the "My Work" view).
+- **Delegate whole tasks** to the coding agent instead of writing code yourself, then check back later.
+- **Review session logs** without switching into your IDE, useful when you assigned work from your phone or another machine.
+- **Approve or comment on draft PRs** on the go, before doing a deeper review in your IDE.
+
+Use Copilot Chat or the CLI instead when you want:
+
+- An **immediate, conversational answer** about code you are actively looking at (Chat).
+- A **quick terminal command explanation or suggestion** without switching context (CLI).
+- To **stay in the loop synchronously**, rather than delegate and check back later.
+
+| Tool | Mode | Best for |
+|---|---|---|
+| **Copilot App** | Asynchronous, agentic | Delegating whole issues, tracking multiple sessions, reviewing on the go |
+| **Copilot Chat** | Synchronous, conversational | Understanding code you're currently looking at, in-editor Q&A |
+| **Copilot CLI** | Synchronous, terminal-based | Quick shell command help without leaving the terminal |
+
 ## Your Task
 
 ### Step 1 - Assign the Issue
@@ -65,6 +88,27 @@ Watch Copilot work. You will see it:
 
 Do not intervene yet. Just observe.
 
+### Step 4 - Explore with Copilot Chat
+
+While the agent session runs in the background, open **Copilot Chat** in your editor (VS Code, JetBrains, or the github.com chat panel) against your local clone of `starter-app`. Try asking it:
+
+- `@workspace explain how app.py stores and loads tasks`
+- `@workspace what would I need to change to add a new field to a task?`
+- `/explain` on the `list` command in `app.py`
+
+This is a different mode of working with Copilot: instead of delegating a whole task, you are having a conversation to build understanding. Notice how Chat answers are grounded in the actual files in your workspace, the same codebase the agent is currently editing in its sandbox.
+
+### Step 5 - Explore with the Copilot CLI
+
+If you have the [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli) installed, try it from your terminal in the repo root:
+
+```bash
+gh copilot suggest "run the starter-app tests and show a summary of failures"
+gh copilot explain "python app.py stats"
+```
+
+The CLI is useful for quick, one-off questions and shell command help without leaving the terminal, a lighter-weight complement to the full agent workflow you triggered in Step 1.
+
 ## What the session log contains
 
 The session log is your audit trail. Expect to see:
@@ -83,12 +127,25 @@ Review this before reviewing the diff; it helps you catch mismatches between you
 - Did it follow repo-specific instructions?
 - Did it test what it changed?
 - Did it explain tradeoffs and limitations?
+- Did Chat/CLI answers match what the agent actually implemented?
+
+## Go Deeper: Awesome Copilot Learning Hub
+
+For a structured, community-maintained path through everything Copilot can do, beyond this workshop, check out the [**Awesome GitHub Copilot Learning Hub**](https://github.com/github/awesome-copilot). It covers:
+
+- Getting-started guides for the Copilot App, Copilot Chat, and Copilot CLI
+- Custom instructions and skills for tailoring Copilot to your team's standards
+- Building custom agents and agentic workflows
+- A cookbook of ready-to-use recipes for extending Copilot across languages and project types
+
+It's a good next stop once you've finished this workshop and want to go beyond the issue-to-PR loop covered here.
 
 ## Reflection Questions
 
 - What surprised you about how Copilot approached the task?
 - Did it interpret your issue the way you intended?
 - What would you write differently in the issue now that you've seen the result?
+- When would you reach for the Copilot App versus Chat or the CLI in your own work?
 
 ## Next Step
 
