@@ -1,8 +1,6 @@
 # Chapter 1 - Write a Well-Formed Issue
 
-<!-- HERO IMAGE PLACEHOLDER: prompt below -->
-<!-- IMAGE PROMPT: Flat, modern illustration of a developer at a laptop typing a structured issue template (problem statement, acceptance criteria checklist visible on screen) with a glowing AI agent icon reading the ticket over their shoulder. Dark navy background, gold accent lines, minimal geometric style, 16:9. -->
-<!-- ALT TEXT: Developer writing a detailed feature issue while an AI agent reviews requirements in the background. -->
+![Developer writing a detailed feature issue while an AI agent reviews requirements in the background.](assets/1-issue.png)
 
 A strong issue is the single highest-leverage input in the AI-native loop. In practice, your issue becomes the spec, prompt, and success contract all at once.
 

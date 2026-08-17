@@ -1,6 +1,6 @@
 # Chapter 2 - Assign to Copilot
 
-![AI-native loop diagram showing issue to agent to PR workflow](assets/ai-native-loop.png)
+![Assigning an issue to Copilot to work on in a secure sandbox](assets/2-assign.png)
 
 Assigning an issue is where the workflow shifts from maker mode to lead mode. You define what to build; Copilot executes in a controlled environment.
 
