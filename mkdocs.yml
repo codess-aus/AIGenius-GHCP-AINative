@@ -1,0 +1,49 @@
+site_name: AI Genius Episode 1 - Attendee Guide
+site_description: Attendee companion for the AI-native development loop workshop.
+repo_url: https://github.com/codess-aus/AIGenius-GHCP-AINative
+
+nav:
+  - Home: index.md
+  - Chapter 1 - Write an Issue: chapter-1-write-an-issue.md
+  - Chapter 2 - Assign to Copilot: chapter-2-assign-to-copilot.md
+  - Chapter 3 - Review a PR: chapter-3-review-a-pr.md
+  - Chapter 4 - Iterate via Comments: chapter-4-iterate.md
+  - Chapter 5 - Azure and AI: chapter-5-azure-and-ai.md
+  - Resources: resources.md
+
+theme:
+  name: material
+  features:
+    - navigation.top
+    - navigation.sections
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+extra_css:
+  - stylesheets/extra.css

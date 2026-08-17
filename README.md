@@ -110,3 +110,21 @@ You are the **tech lead** in this workflow. Copilot handles the *how*. You defin
 **Michelle Sandford** -- Developer Engagement Lead, Australia and NZ
 
 Michelle is a Developer Engagement Leader at Microsoft who writes code, builds with GitHub and Azure AI, and learns out loud.
+
+---
+
+## Workshop Docs Site (MkDocs)
+
+This repository includes an attendee-facing MkDocs Material documentation site.
+
+- Run locally:
+  ```bash
+  pip install -r docs-requirements.txt
+  mkdocs serve
+  ```
+- Build locally:
+  ```bash
+  mkdocs build --strict
+  ```
+- Deployments:
+  - GitHub Actions workflow `.github/workflows/docs.yml` builds and deploys the site to GitHub Pages on pushes to `attendee-mkdocs-site` (and `main`).

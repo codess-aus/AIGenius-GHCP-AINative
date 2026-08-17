@@ -1,0 +1,50 @@
+.home-hero {
+  border-radius: 0.75rem;
+  width: 100%;
+}
+
+.home-chapters {
+  border-radius: 0.9rem;
+  padding: 1rem;
+}
+
+.chapter-eyebrow {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.chapter-grid .chapter-thumb {
+  width: 100%;
+  border-radius: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+[data-md-color-scheme="slate"] .home-chapters {
+  background: #111827;
+}
+
+[data-md-color-scheme="slate"] .chapter-grid > ul > li {
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+
+[data-md-color-scheme="slate"] .chapter-eyebrow {
+  color: #fbbf24;
+}
+
+[data-md-color-scheme="default"] .home-chapters {
+  background: #f8fafc;
+}
+
+[data-md-color-scheme="default"] .chapter-grid > ul > li {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+}
+
+[data-md-color-scheme="default"] .chapter-eyebrow {
+  color: #92400e;
+}
